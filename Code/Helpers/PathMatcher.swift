@@ -62,7 +62,13 @@ struct PathMatcher {
     /// Returns a dictionary of parameter names and variables if a match was found.
     /// Will return `nil` otherwise.
     func execute(path: String) throws -> [String: String]? {
-        guard matches(path) else {
+        
+        //add by zk
+        guard let url = URL(string: path) else{
+            return nil
+        }
+        
+        guard matches(url.path) else {
             return nil
         }
         
@@ -83,8 +89,8 @@ struct PathMatcher {
         
         //
         // Now get the variables from the given `path`.
-        nsrange = NSRange(path.startIndex..<path.endIndex, in: path)
-        matches = regex.matches(in: path, options: [], range: nsrange)
+        nsrange = NSRange(url.path.startIndex..<url.path.endIndex, in: url.path)
+        matches = regex.matches(in: url.path, options: [], range: nsrange)
         
         var parameters: [String: String] = [:]
         
@@ -92,7 +98,7 @@ struct PathMatcher {
         
         for match in matches where match.numberOfRanges > 1 {
             for a in 1..<match.numberOfRanges {
-                if let range = Range(match.range(at: a), in: path) {
+                if let range = Range(match.range(at: a), in: url.path) {
                     if let variableName = parameterIndex[a - 1] {
                         parameters[variableName] = String(path[range])
                     }
@@ -100,8 +106,28 @@ struct PathMatcher {
             }
         }
         
+        parameters.merge(url.getParams()) { (current, _) in current }
         // swiftlint:enable identifier_name
         
         return parameters
     }
+}
+
+extension URL {
+  func getParams() -> [String:String] {
+    var dict = [String:String]()
+
+    if let components = URLComponents(url: self, resolvingAgainstBaseURL: false) {
+      if let queryItems = components.queryItems {
+        for item in queryItems {
+            if let v = item.value{
+                dict[item.name] = v
+            }
+        }
+      }
+      return dict
+    } else {
+      return [:]
+    }
+  }
 }

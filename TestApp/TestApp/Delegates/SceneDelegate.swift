@@ -110,6 +110,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            NavigationRouter.main.navigate(toPath: "/view1B")
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//            NavigationRouter.main.navigate(toPath: "/view2D")
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+//            NavigationRouter.main.navigate(toPath: "/view2D")
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+//            NavigationRouter.main.navigate(toPath: "//view3C")
+//        }
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

@@ -33,7 +33,7 @@ extension NavigationRouter {
         let pathMatcher: PathMatcher = PathMatcher(match: routePath, exact: true)
         
         // Invoke matching method
-        return pathMatcher.matches(path)
+        return pathMatcher.matches(URL(string: path)?.path ?? path)
     }
     
     /// Gets dictionary parameters from given path

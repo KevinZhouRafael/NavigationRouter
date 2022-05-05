@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A91EBDD2808018500601BEC /* BaseClosureRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A91EBDC2808018500601BEC /* BaseClosureRoutable.swift */; };
 		B3CE42C724B770F8004C4002 /* TestFeature1Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE42BE24B770F8004C4002 /* TestFeature1Module.swift */; };
 		B3CE42C824B770F8004C4002 /* ViewModel1A.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE42C024B770F8004C4002 /* ViewModel1A.swift */; };
 		B3CE42C924B770F8004C4002 /* ViewModel1C.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE42C124B770F8004C4002 /* ViewModel1C.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A91EBDC2808018500601BEC /* BaseClosureRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClosureRoutable.swift; sourceTree = "<group>"; };
 		B3CE42B324B770DB004C4002 /* TestFeature1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestFeature1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3CE42B724B770DB004C4002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3CE42BE24B770F8004C4002 /* TestFeature1Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFeature1Module.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				B3CE42C024B770F8004C4002 /* ViewModel1A.swift */,
 				B3CE42C224B770F8004C4002 /* ViewModel1B.swift */,
 				B3CE42C124B770F8004C4002 /* ViewModel1C.swift */,
+				0A91EBDC2808018500601BEC /* BaseClosureRoutable.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			files = (
 				B3CE42CB24B770F8004C4002 /* View1C.swift in Sources */,
 				B3CE42CD24B770F8004C4002 /* View1B.swift in Sources */,
+				0A91EBDD2808018500601BEC /* BaseClosureRoutable.swift in Sources */,
 				B3CE42C824B770F8004C4002 /* ViewModel1A.swift in Sources */,
 				B3CE42C924B770F8004C4002 /* ViewModel1C.swift in Sources */,
 				B3CE42C724B770F8004C4002 /* TestFeature1Module.swift in Sources */,

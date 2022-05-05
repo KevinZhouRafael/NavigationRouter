@@ -58,8 +58,9 @@ extension NavigationRouter {
         }
         
         // Check for a route matching given path
-        guard let route: NavigationRoute = Self.routes.first(where: {
-            self.path(path.lowercased(), matchesRoutePath: $0.path.lowercased())
+        guard let url = URL(string: path),
+              let route: NavigationRoute = Self.routes.first(where: {
+                  self.path(url.path.lowercased(), matchesRoutePath: $0.path.lowercased())
         }) else {
             // Let the authentication handler handle callback URL if applicable
             if let callbackUrl: URL = URL(string: path),
@@ -255,66 +256,70 @@ extension NavigationRouter {
            return
         }
         
-        // Instantiate view model
-        var viewModel = route.type.init(parameters: parameters)
-        
-        // Set navigation interception execution flow (if any)
-        viewModel.navigationInterceptionExecutionFlow = interceptionExecutionFlow
-
-        // Get root controller from active scene
-        guard let keyWindow: UIWindow = self.keyWindow,
-            let rootViewController = keyWindow.rootViewController else {
-                self.handleError(forPath: originalPath, .inactiveScene)
-                return
-        }
-
-        // Choose modal view controller (if any) instead of root view
-        // to be able to navigate in modals
-        let topRootViewController: UIViewController = rootViewController.presentedViewController ?? rootViewController
-        
-        // Create a hosting controller for instantiated view
-        let hostedViewController: UIViewController = viewModel.routedViewController
-#if DEBUG
-        hostedViewController.view.accessibilityIdentifier = originalPath
-#endif
-        
-        // Push hosted view
-        if modal {
-            let modalViewController: UIViewController =
-                embedInNavigationView ? UINavigationController(rootViewController: hostedViewController)
-                    : hostedViewController
-            if #available(iOS 13.0, macOS 10.15, *) {
-                modalViewController.isModalInPresentation = shouldPreventDismissal
-            }
+        if let completeHandler = route.completeHandler{
+            completeHandler(parameters)
+        }else{
+            // Instantiate view model
+            var viewModel = route.type.init(parameters: parameters)
             
-            keyWindow.rootViewController?.present(
-                modalViewController,
-                animated: true,
-                completion: nil)
-        } else if replace {
-            if embedInNavigationView, !(hostedViewController is UITabBarController) {
+            // Set navigation interception execution flow (if any)
+            viewModel.navigationInterceptionExecutionFlow = interceptionExecutionFlow
+
+            // Get root controller from active scene
+            guard let keyWindow: UIWindow = self.keyWindow,
+                let rootViewController = keyWindow.rootViewController else {
+                    self.handleError(forPath: originalPath, .inactiveScene)
+                    return
+            }
+
+            // Choose modal view controller (if any) instead of root view
+            // to be able to navigate in modals
+            let topRootViewController: UIViewController = rootViewController.presentedViewController ?? rootViewController
+            
+            // Create a hosting controller for instantiated view
+            let hostedViewController: UIViewController = viewModel.routedViewController
+    #if DEBUG
+            hostedViewController.view.accessibilityIdentifier = originalPath
+    #endif
+            
+            // Push hosted view
+            if modal {
+                let modalViewController: UIViewController =
+                    embedInNavigationView ? UINavigationController(rootViewController: hostedViewController)
+                        : hostedViewController
+                if #available(iOS 13.0, macOS 10.15, *) {
+                    modalViewController.isModalInPresentation = shouldPreventDismissal
+                }
+                
+                keyWindow.rootViewController?.present(
+                    modalViewController,
+                    animated: true,
+                    completion: nil)
+            } else if replace {
+                if embedInNavigationView, !(hostedViewController is UITabBarController) {
+                    self.setRootViewController(forWindow: keyWindow,
+                                               UINavigationController(rootViewController: hostedViewController),
+                                               animation: animation)
+                } else {
+                    self.setRootViewController(forWindow: keyWindow, hostedViewController, animation: animation)
+                }
+            } else if let navigationController: UINavigationController = topRootViewController.navigationController {
+                    navigationController.pushViewController(hostedViewController,
+                                                            animated: true)
+            } else if let navigationController: UINavigationController = topRootViewController as? UINavigationController {
+                navigationController.pushViewController(hostedViewController, animated: true)
+            } else if let tabBarController: UITabBarController =
+                        topRootViewController as? UITabBarController,
+                      let navigationController: UINavigationController =
+                        tabBarController.selectedViewController as? UINavigationController {
+                navigationController.pushViewController(hostedViewController, animated: true)
+            } else if embedInNavigationView {
                 self.setRootViewController(forWindow: keyWindow,
                                            UINavigationController(rootViewController: hostedViewController),
                                            animation: animation)
             } else {
                 self.setRootViewController(forWindow: keyWindow, hostedViewController, animation: animation)
             }
-        } else if let navigationController: UINavigationController = topRootViewController.navigationController {
-                navigationController.pushViewController(hostedViewController,
-                                                        animated: true)
-        } else if let navigationController: UINavigationController = topRootViewController as? UINavigationController {
-            navigationController.pushViewController(hostedViewController, animated: true)
-        } else if let tabBarController: UITabBarController =
-                    topRootViewController as? UITabBarController,
-                  let navigationController: UINavigationController =
-                    tabBarController.selectedViewController as? UINavigationController {
-            navigationController.pushViewController(hostedViewController, animated: true)
-        } else if embedInNavigationView {
-            self.setRootViewController(forWindow: keyWindow,
-                                       UINavigationController(rootViewController: hostedViewController),
-                                       animation: animation)
-        } else {
-            self.setRootViewController(forWindow: keyWindow, hostedViewController, animation: animation)
         }
         
         // Let post-navigation interceptors do their work

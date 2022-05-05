@@ -45,14 +45,25 @@ public final class TestFeature1Module: RoutableModule {
             type: ViewModel1B.self,
             requiresAuthentication: false,
             allowedExternally: true)
+        let view1BNumRoute: NavigationRoute = NavigationRoute(
+            path: "/view1B/:num",
+            type: ViewModel1C.self,
+            requiresAuthentication: false,
+            allowedExternally: true)
         let view1CRoute: NavigationRoute = NavigationRoute(
             path: "/view1C",
             type: ViewModel1C.self,
             requiresAuthentication: true)
         
+        let closureRoute:NavigationRoute = NavigationRoute(path: "/view1C", { params in
+            debugPrint("参数是:\(params)")
+        })
+        
         // Register routes
         NavigationRouter.bind(route: view1ARoute)
         NavigationRouter.bind(route: view1BRoute)
+        NavigationRouter.bind(route: view1BNumRoute)
         NavigationRouter.bind(route: view1CRoute)
+        NavigationRouter.bind(route: closureRoute)
     }
 }

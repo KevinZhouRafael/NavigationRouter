@@ -22,6 +22,7 @@
 
 import Foundation
 
+public typealias RouteCompleteHandler = (_ params:[String:String]?)->()
 /// Navigation route
 public struct NavigationRoute: Route {
     /// Path
@@ -36,6 +37,8 @@ public struct NavigationRoute: Route {
     /// Whether the route is allowed externally or not
     public var allowedExternally: Bool
     
+    public var completeHandler:RouteCompleteHandler?
+    
     // MARK: - Initializers
     
     /// Initializes a new instance with given data
@@ -45,11 +48,13 @@ public struct NavigationRoute: Route {
     ///   - requiresAuthentication: Whether the route requires authentication or not
     ///   - allowedExternally: Whether the route is allowed ot be launched externally or not
     public init(path: String,
-                type: Routable.Type,
+                _ completeHandler:RouteCompleteHandler? = nil,
+                type: Routable.Type? = nil,
                 requiresAuthentication: Bool = true,
                 allowedExternally: Bool = false) {
         self.path = path.lowercased()
-        self.type = type
+        self.completeHandler = completeHandler
+        self.type = type ?? BaseRoutableVM.self
         self.requiresAuthentication = requiresAuthentication
         self.allowedExternally = allowedExternally
     }

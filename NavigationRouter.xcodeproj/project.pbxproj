@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A91EBDB2807FC7C00601BEC /* Router+Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A91EBDA2807FC7C00601BEC /* Router+Closure.swift */; };
+		0ABE6CFF2808859100F685AE /* NavigationRouter+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE6CFE2808859100F685AE /* NavigationRouter+Custom.swift */; };
+		0ABE6D012808864C00F685AE /* BaseRoutableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE6D002808864C00F685AE /* BaseRoutableVM.swift */; };
 		B38A77A224C09C9300A4919B /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A77A124C09C9300A4919B /* Routable.swift */; };
 		B38A77A424C0A3DB00A4919B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A77A324C0A3DB00A4919B /* Route.swift */; };
 		B38A77A624C0A3F900A4919B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38A77A524C0A3F900A4919B /* Router.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A91EBDA2807FC7C00601BEC /* Router+Closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Closure.swift"; sourceTree = "<group>"; };
+		0ABE6CFE2808859100F685AE /* NavigationRouter+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationRouter+Custom.swift"; sourceTree = "<group>"; };
+		0ABE6D002808864C00F685AE /* BaseRoutableVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRoutableVM.swift; sourceTree = "<group>"; };
 		B31004FD24BC51D5000C718E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B37A4451238E745600F0815B /* NavigationRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NavigationRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37A4455238E745600F0815B /* NavigationRouter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NavigationRouter-Info.plist"; sourceTree = "<group>"; };
@@ -53,7 +59,7 @@
 		B37B267A238E85EC003FB66E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B385480424BC9F27003CD370 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		B385480524BC9FCA003CD370 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		B385480624BCA028003CD370 /* NavigationRouter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = NavigationRouter.podspec; sourceTree = "<group>"; };
+		B385480624BCA028003CD370 /* NavigationRouter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = NavigationRouter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B38A77A124C09C9300A4919B /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		B38A77A324C0A3DB00A4919B /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		B38A77A524C0A3F900A4919B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -91,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A91EBD92807FC5300601BEC /* Closure */ = {
+			isa = PBXGroup;
+			children = (
+				0A91EBDA2807FC7C00601BEC /* Router+Closure.swift */,
+			);
+			path = Closure;
+			sourceTree = "<group>";
+		};
 		B37A4447238E745600F0815B = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				B38A77A824C0A75400A4919B /* Router+MVVM.swift */,
+				0ABE6D002808864C00F685AE /* BaseRoutableVM.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -174,6 +189,7 @@
 				B3C74B4D24B76CFD007F5CB9 /* RouterErrorHandler.swift */,
 				B3C74B4E24B76CFD007F5CB9 /* RouterAuthenticationHandler.swift */,
 				B38A77A724C0A74400A4919B /* MVVM */,
+				0A91EBD92807FC5300601BEC /* Closure */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -228,6 +244,7 @@
 				B3C74B6024B76CFE007F5CB9 /* NavigationRouter+PathMatcher.swift */,
 				B3C74B6124B76CFE007F5CB9 /* NavigationRouter+ErrorHandling.swift */,
 				B3C74B5F24B76CFE007F5CB9 /* NavigationRouter+PrivateHelpers.swift */,
+				0ABE6CFE2808859100F685AE /* NavigationRouter+Custom.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,6 +373,8 @@
 				B38A77A224C09C9300A4919B /* Routable.swift in Sources */,
 				B3C74B7424B76CFF007F5CB9 /* RoutableModule.swift in Sources */,
 				B3C74B7224B76CFF007F5CB9 /* RoutingError.swift in Sources */,
+				0A91EBDB2807FC7C00601BEC /* Router+Closure.swift in Sources */,
+				0ABE6CFF2808859100F685AE /* NavigationRouter+Custom.swift in Sources */,
 				B3C74B7324B76CFF007F5CB9 /* RoutableModulesFactory.swift in Sources */,
 				B3C74B7824B76CFF007F5CB9 /* NavigationRouter+PathMatcher.swift in Sources */,
 				B3C74B7B24B76CFF007F5CB9 /* TransitionAnimation.swift in Sources */,
@@ -363,6 +382,7 @@
 				B3C74B6924B76CFE007F5CB9 /* UIWindow+KeyWindow.swift in Sources */,
 				B3C74B7A24B76CFF007F5CB9 /* NavigationRouter+NavigationHandling.swift in Sources */,
 				B3C74B6824B76CFE007F5CB9 /* UIWindow+Animation.swift in Sources */,
+				0ABE6D012808864C00F685AE /* BaseRoutableVM.swift in Sources */,
 				B38A77A424C0A3DB00A4919B /* Route.swift in Sources */,
 				B3C74B7024B76CFE007F5CB9 /* RoutedLink.swift in Sources */,
 				B38A77AB24C0A98F00A4919B /* SwiftUIView+TypeErasure.swift in Sources */,
@@ -429,7 +449,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -487,7 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -511,6 +531,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting files/NavigationRouter-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,6 +559,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting files/NavigationRouter-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

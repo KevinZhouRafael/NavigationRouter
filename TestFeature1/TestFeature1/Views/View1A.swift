@@ -39,6 +39,28 @@ struct View1A: RoutableView {
                     Text("In-module navigation")
                         .font(.headline)
                     
+                    RoutedLink(to: "/view1B/123456?name=hello&age=21") {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Navigate to /view1B/123456?name=hello&age=21")
+                                    .bold()
+                                    .foregroundColor(Color(UIColor.systemBackground))
+                                
+                                Text("(without authentication)")
+                                    .font(.footnote)
+                                    .foregroundColor(Color(UIColor.systemBackground))
+                            }
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(Color(UIColor.systemBackground))
+                        }
+                        .padding()
+                    }
+                    .background(Color.primary)
+                    .cornerRadius(4)
+                    
                     RoutedLink(to: "/view1B") {
                         HStack {
                             VStack(alignment: .leading, spacing: 10) {
@@ -152,7 +174,7 @@ struct View1A: RoutableView {
                     RoutedLink(to: "/view2C/5") {
                         HStack {
                             VStack(alignment: .leading, spacing: 10) {
-                                Text("Navigate to View 2C")
+                                Text("Navigate to View 2C:id")
                                     .bold()
                                     .foregroundColor(.white)
                                     .accessibility(identifier: "testNavigationBetweenModulesWithParameters")
