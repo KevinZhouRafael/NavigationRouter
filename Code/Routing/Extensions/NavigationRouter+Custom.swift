@@ -54,3 +54,15 @@ public extension NavigationRouter{
         }
     }
 }
+
+
+extension Set where Element == NavigationRoute{
+    func match(where predicate: (Element) throws -> Bool,priority priorityPredicate: (Element) throws -> Bool) rethrows -> Element?{
+        if let priorityOne = try first(where: priorityPredicate){
+            return priorityOne
+        }
+        
+        return try first(where: predicate)
+    }
+}
+

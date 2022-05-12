@@ -59,8 +59,10 @@ extension NavigationRouter {
         
         // Check for a route matching given path
         guard let url = URL(string: path),
-              let route: NavigationRoute = Self.routes.first(where: {
+              let route: NavigationRoute = Self.routes.match(where: {
                   self.path(url.path.lowercased(), matchesRoutePath: $0.path.lowercased())
+        }, priority:{
+            path.lowercased() == $0.path.lowercased()
         }) else {
             // Let the authentication handler handle callback URL if applicable
             if let callbackUrl: URL = URL(string: path),
