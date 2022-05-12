@@ -1,3 +1,26 @@
+
+
+
+# New Feature
+
+###1 Distinguish parsing:
+
+* /aaa/param
+* /aaa/:param
+
+###2 Can parsing:
+
+* /aaa?param=xxx
+
+###3 The block named RouteCompleteHandler in init func of Class NavigationRoute is highest priority。
+Write navgation code in RouteCompleteHandler.<p>
+Write login code in RouteCompleteHandler.
+
+
+
+# Fork Progect:
+[https://github.com/corteggo/NavigationRouter](https://github.com/corteggo/NavigationRouter)
+
 # NavigationRouter
 
 NavigationRouter is a router implementation designed for complex modular apps, written in Swift.
