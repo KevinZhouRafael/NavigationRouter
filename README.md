@@ -3,16 +3,16 @@
 
 # New Feature
 
-###1 Distinguish parsing:
+### 1 Distinguish parsing:
 
 * /aaa/param
 * /aaa/:param
 
-###2 Can parsing:
+### 2 Can parsing:
 
 * /aaa?param=xxx
 
-###3 The block named RouteCompleteHandler in init func of Class NavigationRoute is highest priority。
+### 3 The block named RouteCompleteHandler in init func of Class NavigationRoute is highest priority。
 Write navgation code in RouteCompleteHandler.<p>
 Write login code in RouteCompleteHandler.
 
