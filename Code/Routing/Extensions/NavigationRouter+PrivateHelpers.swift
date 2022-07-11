@@ -119,8 +119,8 @@ extension NavigationRouter {
         interceptionExecutionFlow: NavigationInterceptionFlow? = nil,
         animation: NavigationTransition? = nil) {
         // Parse parameters
-        let parameters: [String: String]? = self.path(path.lowercased(),
-                                                      toDictionaryForRoutePath: route.path.lowercased())
+        let parameters: [String: String]? = self.path(path,
+                                                      toDictionaryForRoutePath: route.path)
         
         // Ensure we've got valid parameters
         if !(route.type.requiredParameters?.isEmpty ?? true) {
