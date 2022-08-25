@@ -3,7 +3,6 @@
 //  WDBook
 //
 //  Created by kai zhou on 2022/4/14.
-//  Copyright © 2022 WeDevote Bible. All rights reserved.
 //
 
 import Foundation
