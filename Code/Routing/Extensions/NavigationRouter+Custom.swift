@@ -15,8 +15,8 @@ public extension NavigationRouter{
         topNavigationController?.pushViewController(vc, animated: animated)
     }
     
-    func popToRoot(){
-        rootNavigationController?.popToRootViewController(animated: false)
+    func popToRoot(animated:Bool = true){
+        rootNavigationController?.popToRootViewController(animated: animated)
     }
     
     var rootNavigationController:UINavigationController?{
