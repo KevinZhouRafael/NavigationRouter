@@ -20,7 +20,13 @@
 //  THE SOFTWARE.
 //
 
+#if canImport(UIKit)
 import UIKit
+#endif
+
+#if canImport(AppKit)
+import AppKit
+#endif
 
 /// Navigation router
 open class NavigationRouter: Router {
@@ -63,14 +69,16 @@ open class NavigationRouter: Router {
     private(set) lazy var scene: UIScene? = nil
 #endif
     
-    /// Key window for associated scene (if any)
-    var keyWindow: UIWindow? {
-        if #available(iOS 13.0, macOS 10.15, *), let scene: UIScene = scene {
-            return UIWindow.keyWindow(forScene: scene)
-        } else {
-            return UIWindow.keyWindow // first active scene
-        }
-    }
+   #if canImport(UIKit)
+   /// Key window for associated scene (if any)
+   var keyWindow: UIWindow? {
+       if #available(iOS 13.0, macOS 10.15, *), let scene: UIScene = scene {
+           return UIWindow.keyWindow(forScene: scene)
+       } else {
+           return UIWindow.keyWindow // first active scene
+       }
+   }
+   #endif
     
     // MARK: - Initializers
     
@@ -84,6 +92,7 @@ open class NavigationRouter: Router {
             target: .global())
     }
     
+    #if canImport(UIKit)
     /// Initializes a new instance with given scene
     /// - Parameter scene: UIScene instance to use router for
     @available(iOS 13.0, macOS 10.15, *)
@@ -92,6 +101,7 @@ open class NavigationRouter: Router {
         
         self.scene = scene
     }
+    #endif
     
     // MARK: - Static methods
     
