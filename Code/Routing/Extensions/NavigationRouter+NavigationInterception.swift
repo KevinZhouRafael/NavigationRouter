@@ -179,7 +179,7 @@ extension NavigationRouter {
         embedInNavigationView: Bool = true,
         modal: Bool = false,
         shouldPreventDismissal: Bool = false,
-        animation: NavigationTransition? = nil,
+        animation: NRNavigationTransition? = nil,
         completion: @escaping (() -> Void)) {
         // Get interceptors for given path
         let interceptors: [NavigationInterceptor] = Self.interceptors
@@ -227,7 +227,7 @@ extension NavigationRouter {
         embedInNavigationView: Bool = true,
         modal: Bool = false,
         shouldPreventDismissal: Bool = false,
-        animation: NavigationTransition? = nil) {
+        animation: NRNavigationTransition? = nil) {
         // Get interceptors for given path
         let interceptors: [NavigationInterceptor] = Self.interceptors
             .filter({ $0.path.lowercased() == route.path.lowercased() && $0.when == .after })
@@ -276,7 +276,7 @@ extension NavigationRouter {
         embedInNavigationView: Bool = true,
         modal: Bool = false,
         shouldPreventDismissal: Bool = false,
-        animation: NavigationTransition? = nil,
+        animation: NRNavigationTransition? = nil,
         completion: (() -> Void)? = nil) {
         
         // Get interceptor to handle

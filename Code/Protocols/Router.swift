@@ -78,5 +78,5 @@ public protocol Router {
         modal: Bool,
         shouldPreventDismissal: Bool,
         interceptionExecutionFlow: NavigationInterceptionFlow?,
-        animation: NavigationTransition?)
+        animation: NRNavigationTransition?)
 }

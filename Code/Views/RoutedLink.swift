@@ -51,7 +51,7 @@ public struct RoutedLink<Label: SwiftUI.View>: SwiftUI.View {
     private let interceptionExecutionFlow: NavigationInterceptionFlow?
     
     /// Transition animation
-    private let animation: NavigationTransition?
+    private let animation: NRNavigationTransition?
     
     /// View contents
     private let label: Label
@@ -75,7 +75,7 @@ public struct RoutedLink<Label: SwiftUI.View>: SwiftUI.View {
                 modal: Bool = false,
                 shouldPreventDismissal: Bool = false,
                 interceptionExecutionFlow: NavigationInterceptionFlow? = nil,
-                animation: NavigationTransition? = nil,
+                animation: NRNavigationTransition? = nil,
                 router: Router = NavigationRouter.main,
                 @ViewBuilder label: () -> Label) {
         self.path = path

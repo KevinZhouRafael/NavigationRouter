@@ -21,7 +21,7 @@
 //
 
 /// Navigation transition animation
-public enum NavigationTransition {
+public enum NRNavigationTransition {
     /// Left
     case left
     

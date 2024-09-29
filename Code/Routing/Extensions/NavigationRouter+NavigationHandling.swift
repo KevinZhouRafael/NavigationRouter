@@ -46,7 +46,7 @@ extension NavigationRouter {
         modal: Bool = false,
         shouldPreventDismissal: Bool = false,
         interceptionExecutionFlow: NavigationInterceptionFlow? = nil,
-        animation: NavigationTransition? = nil) {
+        animation: NRNavigationTransition? = nil) {
         
         self.dispatchQueue.async {
             self.checkNavigationRequirementsAndNavigate(toPath: path,

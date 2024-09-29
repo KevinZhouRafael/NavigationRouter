@@ -42,7 +42,7 @@ extension NavigationRouter {
         modal: Bool = false,
         shouldPreventDismissal: Bool = false,
         interceptionExecutionFlow: NavigationInterceptionFlow? = nil,
-        animation: NavigationTransition? = nil) {
+        animation: NRNavigationTransition? = nil) {
         // Check if it is an external url and let the system handle it
         guard path.starts(with: "/") else {
             DispatchQueue.main.async {
@@ -117,7 +117,7 @@ extension NavigationRouter {
         modal: Bool = false,
         shouldPreventDismissal: Bool = false,
         interceptionExecutionFlow: NavigationInterceptionFlow? = nil,
-        animation: NavigationTransition? = nil) {
+        animation: NRNavigationTransition? = nil) {
         // Parse parameters
         let parameters: [String: String]? = self.path(path,
                                                       toDictionaryForRoutePath: route.path)
@@ -177,7 +177,7 @@ extension NavigationRouter {
         shouldPreventDismissal: Bool = false,
         ignoreInterceptorsBefore: Bool = false,
         interceptionExecutionFlow: NavigationInterceptionFlow? = nil,
-        animation: NavigationTransition? = nil) {
+        animation: NRNavigationTransition? = nil) {
         
         // Declare actual navigation flow
         let actualNavigationFlow: (() -> Void) = {
@@ -234,7 +234,7 @@ extension NavigationRouter {
         modal: Bool = false,
         shouldPreventDismissal: Bool = false,
         interceptionExecutionFlow: NavigationInterceptionFlow? = nil,
-        animation: NavigationTransition? = nil) {
+        animation: NRNavigationTransition? = nil) {
         // Check for authentication level
         guard !route.requiresAuthentication || Self.isUserAuthenticated else {
            guard let authenticationHandler: RouterAuthenticationHandler = Self.authenticationHandler else {
@@ -345,7 +345,7 @@ extension NavigationRouter {
     private func setRootViewController(
         forWindow window: UIWindow,
         _ viewController: UIViewController,
-        animation: NavigationTransition? = .left) {
+        animation: NRNavigationTransition? = .left) {
         // Ensure we've got a valid animation, otherwise change it immediately
         guard animation != nil, animation != .some(.none) else {
             window.rootViewController = viewController
